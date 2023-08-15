@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Task 2 """
+""" Task 3 """
 from flask import Flask
 
 app = Flask(__name__)
@@ -22,6 +22,13 @@ def c_with_text(text):
     """C + text"""
     text = text.replace('_', ' ')
     return f"C {text}"
+
+
+@app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
+def python_with_text(text):
+    text = text.replace('_', ' ')
+    return f"Python {text}"
 
 
 if __name__ == '__main__':
