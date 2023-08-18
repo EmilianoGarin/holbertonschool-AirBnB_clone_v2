@@ -9,13 +9,13 @@ app = Flask(__name__)
 
 
 @app.teardown_appcontext
-def storage_close():
+def storage_close(self):
     """close the sesion"""
     storage.close()
 
 
-@app.route('/states_list', strict_slashes=False)
-def state_list():
+@app.route("/states_list", strict_slashes=False)
+def states_list():
     """ show the list of states"""
     return render_template("7-states_list.html",
                            states=storage.all(State).values())
